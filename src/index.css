@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Rancho&display=swap&family=Roboto:ital,wght@0,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Cabin", sans-serif;
+}
+.dms {
+  font-family: "DM Serif Display", serif;
+  font-style: italic;
+}
+
+
+/* Zoom Image CSS */
+
+.image-container {
+  width: 300px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.image-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.158); /* Adjust the opacity here for the darkness */
+}
+
+.zoom-image {
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover .zoom-image {
+  transform: scale(1.09);
+  /* Controls the zoom level */
+}
+
+/* Zoom Image CSS */
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.image-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.158); /* Adjust the opacity here for the darkness */
+}
+
+.zoom-image {
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover .zoom-image {
+  transform: scale(1.09);
+  /* Controls the zoom level */
+}
