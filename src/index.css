@@ -73,3 +73,13 @@
   transform: scale(1.09);
   /* Controls the zoom level */
 }
+
+/* backdrop filter for navbar */
+.backdrop-filter{
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+.blur-backdrop-filter{
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}

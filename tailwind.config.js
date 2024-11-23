@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        rancho: "'Rancho', sans-serif",
+        roboto: "'Roboto', sans-serif",
+        dms: "'DM Serif Display', serif"
+      }
+    },
   },
   plugins: [
     require('daisyui'),
