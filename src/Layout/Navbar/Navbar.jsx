@@ -13,11 +13,11 @@ const Navbar = () => {
     }, [theme])
 
     const navOptions = <>
-        <li className="cursor-pointer text-xs text-white hover:ring-2 hover:ring-lime-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/'><div>Home</div></Link></li>
-        <li className="cursor-pointer text-xs text-white hover:ring-2 hover:ring-lime-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/contactUs'><div>Contact Us</div></Link></li>
-        <li className="cursor-pointer text-xs text-white hover:ring-2 hover:ring-lime-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/dashBoard'><div>Dashboard</div></Link></li>
-        <li className="cursor-pointer text-xs text-white hover:ring-2 hover:ring-lime-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/menu'><div>Our Menu</div></Link></li>
-        <li className="cursor-pointer text-xs text-white hover:ring-2 hover:ring-lime-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/shop'><div>Our Shop</div></Link></li>
+        <li className="cursor-pointer text-xs text-white hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/'><div>Home</div></Link></li>
+        <li className="cursor-pointer text-xs text-white hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/contactUs'><div>Contact Us</div></Link></li>
+        <li className="cursor-pointer text-xs text-white hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/dashBoard'><div>Dashboard</div></Link></li>
+        <li className="cursor-pointer text-xs text-white hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/menu'><div>Our Menu</div></Link></li>
+        <li className="cursor-pointer text-xs text-white hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/shop'><div>Our Shop</div></Link></li>
     </>
 
 
@@ -39,11 +39,11 @@ const Navbar = () => {
     return (
         <div className='navbar fixed z-10 bg-opacity-80 bg-clip-padding blur-backdrop-filter px-4'>
             
-            <div className="dropdown">
+            <div className="dropdown text-white">
                         <div tabIndex={0} role="button" className="btn btn-ghost  lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-red-900  w-52 ">
                             {navOptions}
                         </ul>
                     </div>

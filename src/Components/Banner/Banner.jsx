@@ -7,7 +7,7 @@ const Banner = () => {
             infiniteLoop
             autoPlay
             interval={2500}
-            className="text-center"
+            className="text-center mb-20"
         >
             <div className="lg:h-[800px]">
                 <img src="https://i.postimg.cc/RZfDQj3d/01.jpg" />
