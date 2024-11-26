@@ -5,6 +5,7 @@ import Description from "../../Components/Description/Description";
 import Featured from "../../Components/Featured/Featured";
 import MenuSection from "../../Components/MenuSection/MenuSection";
 import RecommendationSection from "../../Components/RecommendationSection/RecommendationSection";
+import Testimonials from "../../Components/Testimonials/Testimonials";
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <CallUsSection></CallUsSection>
             <RecommendationSection></RecommendationSection>
             <Featured></Featured>
+            <Testimonials></Testimonials>
         </div>
     );
 };

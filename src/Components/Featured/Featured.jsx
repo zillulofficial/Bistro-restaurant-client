@@ -4,7 +4,7 @@ const Featured = () => {
     return (
         <div className="relative">
             <div class="absolute inset-0 bg-black bg-opacity-50 "></div>
-            <div className="bg-[url('https://i.postimg.cc/mg7fqJ5X/featured.jpg')] bg-cover bg-no-repeat  pt-20 pb-20 mb-24">
+            <div className="bg-[url('https://i.postimg.cc/mg7fqJ5X/featured.jpg')] bg-fixed bg-cover bg-no-repeat  pt-20 pb-20 mb-24">
                 <SectionTitle
                     subHeading='Check it out'
                     Heading='From our menu'
