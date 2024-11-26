@@ -27,23 +27,23 @@ const Categories = () => {
             >
                 <SwiperSlide>
                     <img src="https://i.postimg.cc/fTbMv49Y/slide1.jpg" alt="" />
-                    <p className='uppercase font-rancho font-bold text-lg md:text-2xl text-center -mt-16 drop-shadow-lg text-white'>SALADS</p>
+                    <p className='uppercase font-Cinzel font-bold text-lg lg:text-2xl text-center -mt-16 drop-shadow-lg text-white'>SALADS</p>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src="https://i.postimg.cc/SNtkTZ63/slide2.jpg" alt="" />
-                    <p className='uppercase font-rancho font-bold text-lg md:text-2xl text-center -mt-16 drop-shadow-lg text-white'>Pizzas</p>
+                    <p className='uppercase font-Cinzel font-bold text-lg lg:text-2xl text-center -mt-16 drop-shadow-lg text-white'>Pizzas</p>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src="https://i.postimg.cc/t4ZyLhDT/slide3.jpg" alt="" />
-                    <p className='uppercase font-rancho font-bold text-lg md:text-2xl text-center -mt-16 drop-shadow-lg text-white'>Soups</p>
+                    <p className='uppercase font-Cinzel font-bold text-lg lg:text-2xl text-center -mt-16 drop-shadow-lg text-white'>Soups</p>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src="https://i.postimg.cc/g2CddnBK/slide4.jpg" alt="" />
-                    <p className='uppercase font-rancho font-bold text-lg md:text-2xl text-center -mt-16 drop-shadow-lg text-white'>Cakes</p>
+                    <p className='uppercase font-Cinzel font-bold text-lg lg:text-2xl text-center -mt-16 drop-shadow-lg text-white'>Cakes</p>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src="https://i.postimg.cc/fTbMv49Y/slide1.jpg" alt="" />
-                    <p className='uppercase font-rancho font-bold text-lg md:text-2xl text-center -mt-16 drop-shadow-lg text-white'>SALADS</p>
+                    <p className='uppercase font-Cinzel font-bold text-lg lg:text-2xl text-center -mt-16 drop-shadow-lg text-white'>SALADS</p>
                 </SwiperSlide>
             </Swiper>
         </div>
