@@ -2,6 +2,7 @@ import Banner from "../../Components/Banner/Banner";
 import CallUsSection from "../../Components/CallUsSection/CallUsSection";
 import Categories from "../../Components/Categories/Categories";
 import Description from "../../Components/Description/Description";
+import Featured from "../../Components/Featured/Featured";
 import MenuSection from "../../Components/MenuSection/MenuSection";
 import RecommendationSection from "../../Components/RecommendationSection/RecommendationSection";
 
@@ -14,6 +15,7 @@ const Home = () => {
             <MenuSection></MenuSection>
             <CallUsSection></CallUsSection>
             <RecommendationSection></RecommendationSection>
+            <Featured></Featured>
         </div>
     );
 };
