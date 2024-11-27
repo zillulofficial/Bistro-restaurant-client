@@ -1,17 +1,12 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import MenuCard from "../MenuCard/MenuCard";
+import useMenu from "../../Hooks/useMenu";
 
 const MenuSection = () => {
-    const [menu, setMenu] = useState()
-    useEffect(() => {
-        fetch('menu.json')
-            .then(res => res.json())
-            .then(data => {
-                const menuItems = data.filter(item => item.category === 'salad')
-                setMenu(menuItems)
-            })
-    }, [])
+    const [menu] = useMenu()
+    const salad = menu.filter(item => item.category === 'salad')
+    
     return (
         <div className="mb-24 lg:container mx-auto">
             <SectionTitle
@@ -20,7 +15,7 @@ const MenuSection = () => {
             ></SectionTitle>
             <div className="grid md:grid-cols-2 gap-6 mb-12">
                 {
-                    menu.map(item => <MenuCard key={item._id} item={item}></MenuCard>)
+                    salad.map(item => <MenuCard key={item._id} item={item}></MenuCard>)
                 }
             </div>
             {/* button */}
