@@ -5,10 +5,10 @@ import ShopCard from "../ShopCard/ShopCard";
 const RecommendationSection = () => {
     const [shop, setShop] = useState()
     useEffect(() => {
-        fetch('menu.json')
+        fetch(`${import.meta.env.VITE_API_URL}/menu`)
             .then(res => res.json())
             .then(data => {
-                const menuItems = data.filter(item => item.category === 'offered')
+                const menuItems = data?.filter(item => item.category === 'offered')
                 setShop(menuItems)
             })
     }, [])
@@ -21,7 +21,7 @@ const RecommendationSection = () => {
             ></SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {
-                    shop.map(items=><ShopCard key={items._id} items={items}></ShopCard>)
+                    shop?.map(items=><ShopCard key={items._id} items={items}></ShopCard>)
                 }
             </div>
         </div>

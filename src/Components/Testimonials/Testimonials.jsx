@@ -11,7 +11,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 const Testimonials = () => {
     const [reviews, setReviews] = useState()
     useEffect(() => {
-        fetch('review.json')
+        fetch(`${import.meta.env.VITE_API_URL}/review`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data)
@@ -27,7 +27,7 @@ const Testimonials = () => {
                 <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
 
                     {
-                        reviews.map(review => <SwiperSlide className="text-center px-16 pt-12 pb-24" key={review._id}>
+                        reviews?.map(review => <SwiperSlide className="text-center px-16 pt-12 pb-24" key={review._id}>
                             <Rating className="mx-auto mb-12" style={{ maxWidth: 250 }} value={review.rating} />
                             <FaQuoteLeft className="text-8xl mx-auto mb-12"></FaQuoteLeft>
                             <p className="mb-3">{review.details}</p>

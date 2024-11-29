@@ -1,14 +1,15 @@
 
 const ShopCard = ({ items }) => {
-    const { name, recipe, image } = items
+    const { name, recipe, image, price } = items
     return (
         <div>
-            <div className="card mx-auto bg-base-100 w-[350px] shadow-xl hover:scale-[.95] duration-200 transition-all ease-in">
+            <div className="relative card mx-auto bg-base-100 w-[350px] shadow-xl hover:scale-[.95] duration-200 transition-all ease-in">
                 <figure>
                     <img
                         src={image}
                         alt="Shoes" />
                 </figure>
+                <p className="absolute top-2 right-2 font-Cinzel font-semibold text-white bg-black bg-opacity-70 w-12 text-center rounded-sm">${price}</p>
                 <div className="card-body text-center">
                     <h2 className="text-2xl mb-2">{name}</h2>
                     <p className="mb-6">{recipe}</p>

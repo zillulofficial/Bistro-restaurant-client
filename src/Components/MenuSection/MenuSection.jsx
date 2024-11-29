@@ -5,8 +5,6 @@ import useMenu from "../../Hooks/useMenu";
 
 const MenuSection = () => {
     const [menu] = useMenu()
-    const salad = menu.filter(item => item.category === 'salad')
-    
     return (
         <div className="mb-24 lg:container mx-auto">
             <SectionTitle
@@ -15,7 +13,7 @@ const MenuSection = () => {
             ></SectionTitle>
             <div className="grid md:grid-cols-2 gap-6 mb-12">
                 {
-                    salad.map(item => <MenuCard key={item._id} item={item}></MenuCard>)
+                    menu?.filter(item=> item.category === 'salad').map(item=> <MenuCard key={item._id} item={item}></MenuCard>)
                 }
             </div>
             {/* button */}
