@@ -18,6 +18,7 @@ const Navbar = () => {
         <li className="cursor-pointer text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/dashBoard'><div>Dashboard</div></Link></li>
         <li className="cursor-pointer text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/menu'><div>Our Menu</div></Link></li>
         <li className="cursor-pointer text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/shop/salad'><div>Our Shop</div></Link></li>
+        <li className="cursor-pointer text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/login'><div>Login</div></Link></li>
     </>
 
 
