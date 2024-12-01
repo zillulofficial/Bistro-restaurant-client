@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
-    // const { user, logout } = useContext(AuthContext)
-    // const navigate= useNavigate()
+    const { user, logout } = useAuth()
+    const navigate= useNavigate()
     const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
 
     useEffect(() => {
@@ -13,13 +14,12 @@ const Navbar = () => {
     }, [theme])
 
     const navOptions = <>
-        <li className="cursor-pointer text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/'><div>Home</div></Link></li>
-        <li className="cursor-pointer text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/contactUs'><div>Contact Us</div></Link></li>
-        <li className="cursor-pointer text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/dashBoard'><div>Dashboard</div></Link></li>
-        <li className="cursor-pointer text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/menu'><div>Our Menu</div></Link></li>
-        <li className="cursor-pointer text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/shop/salad'><div>Our Shop</div></Link></li>
-        <li className="cursor-pointer text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/login'><div>Login</div></Link></li>
-    </>
+        <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/'><div>Home</div></Link></li>
+        <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/contactUs'><div>Contact Us</div></Link></li>
+        <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/dashBoard'><div>Dashboard</div></Link></li>
+        <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/menu'><div>Our Menu</div></Link></li>
+        <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/shop/salad'><div>Our Shop</div></Link></li>
+ </>
 
 
     const handleToggle = e => {
@@ -30,13 +30,13 @@ const Navbar = () => {
             setTheme("light")
         }
     }
-    // const handleLogOut= ()=>{
-    //     logout()
-    //     .then(
-    //         navigate('/')
-    //     )
+    const handleLogOut= ()=>{
+        logout()
+        .then(
+            navigate('/')
+        )
 
-    // }
+    }
     return (
         <div className='navbar fixed z-10 bg-black bg-opacity-30 bg-clip-padding blur-backdrop-filter px-4'>
             
@@ -61,25 +61,25 @@ const Navbar = () => {
                 </div>
                 <ul className='menu-horizontal px-1'>
 
-                    {/* {
+                    {
                         user ?
-                            <li className="mr-3  hover:rounded-lg hover:bg-none">
+                            <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto">
                                 <div onClick={handleLogOut}>
                                     Logout
                                 </div>
                             </li>
                             :
-                            <li className=" hover:rounded-lg hover:bg-none">
+                            <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto">
                                 <Link to='/login'>
                                     <div>
                                         Login
                                     </div>
                                 </Link>
                             </li>
-                    } */}
+                    }
                 </ul>
 
-                {/* {
+                {
                     user &&
                     <div className='dropdown dropdown-end z-50'>
                         <div
@@ -97,7 +97,7 @@ const Navbar = () => {
                         </div>
 
                     </div>
-                } */}
+                }
                 <div>
                     <label className="swap swap-rotate text-end ml-3">
 

@@ -4,15 +4,26 @@ import { FaEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
 import { TbBrandGithubFilled } from "react-icons/tb";
 import { RiCheckFill } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const { login, googleLogIn, facebookLogIn, githubLogIn, user, loader }= useAuth()
     const captchaRef = useRef(null)
     const [disable, setDisable] = useState(true)
     const [showPassword, setShowPassword] = useState(false)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state || '/';
+    useEffect(() => {
+        if (user) {
+            navigate('/')
+        }
+    }, [])
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -34,20 +45,63 @@ const Login = () => {
             setDisable(true)
         }
     }
+
+    const handleSocialSignIn = (socialProvider) => {
+        socialProvider()
+            .then(result => {
+                if (result.user) {
+                    console.log(result.user)
+                    
+                    navigate(from)
+                }
+            })
+            .catch(error => console.log(error))
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        const form = e.target
+        const email = form.email.value
+        const password = form.password.value
+        // console.log(email, password)
+        login(email, password)
+            .then((result) => {
+                const loggedInUser = result.user
+                console.log(loggedInUser);
+                if (result.user) {
+                    navigate(from)
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Logged in successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Okay'
+                    })
+                }
+                console.log(result)
+            })
+            .catch(() => {
+                Swal.fire({
+                    title: 'error!',
+                    text: 'There is an error',
+                    icon: 'error',
+                    confirmButtonText: 'Okay'
+                })
+            })
+    }
     return (
-        <div className="md:py-28 bg-[url('https://i.postimg.cc/LsVXK5Kx/authentication.png')] bg-no-repeat bg-cover h-screen flex  items-center">
+        <div className="md:py-28 bg-[url('https://i.postimg.cc/LsVXK5Kx/authentication.png')] bg-no-repeat bg-cover lg:h-screen flex  items-center">
             <Helmet>
                 <title>BistroBoss | Login</title>
             </Helmet>
-            <div className="py-8 container mx-auto bg-[url('https://i.postimg.cc/LsVXK5Kx/authentication.png')] bg-no-repeat bg-cover shadow-2xl flex flex-col md:flex-row">
-                <div>
-                    <img className="hidden lg:block mx-auto" src="https://i.postimg.cc/pLJhxqKQ/authentication2.png" alt="" />
+            <div className="py-8 container mx-auto bg-[url('https://i.postimg.cc/LsVXK5Kx/authentication.png')] bg-no-repeat bg-cover shadow-2xl flex flex-col md:flex-row items-center">
+                <div className="hidden lg:block ">
+                    <img className="mx-auto" src="https://i.postimg.cc/pLJhxqKQ/authentication2.png" alt="" />
                 </div>
                 <div className="mx-auto md:w-3/4 lg:w-1/2">
                     <div className="hero md:min-h-96 w-full">
                         <div className="hero-content rounded-lg p-5 w-full">
                             <div className=" shrink-0 w-full ">
-                                <form onClick={handleLogin} className="card-body">
+                                <form onClick={handleSubmit} className="card-body">
                                     <div>
                                         <h3 className="text-4xl text-[#444444] roboto font-semibold mb-6">Login</h3>
 

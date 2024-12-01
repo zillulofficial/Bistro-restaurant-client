@@ -13,6 +13,7 @@ import Menu from './Pages/Menu/Menu.jsx';
 import OurShop from './Pages/OurShop/OurShop.jsx';
 import ContactUs from './Pages/ContactUs/ContactUs.jsx';
 import Login from './Pages/Login/Login.jsx';
+import AuthProvider from './Provider/AuthProvider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -45,8 +46,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HelmetProvider>
-      <RouterProvider router={router} />
-    </HelmetProvider>
+    <AuthProvider>
+      <HelmetProvider>
+        <RouterProvider router={router} />
+      </HelmetProvider>
+    </AuthProvider>
   </StrictMode>,
 )
