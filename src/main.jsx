@@ -14,6 +14,7 @@ import OurShop from './Pages/OurShop/OurShop.jsx';
 import ContactUs from './Pages/ContactUs/ContactUs.jsx';
 import Login from './Pages/Login/Login.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
+import Register from './Pages/Register/Register.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login></Login>
+      },
+      {
+        path: 'register',
+        element: <Register></Register>
       }
     ]
   },
