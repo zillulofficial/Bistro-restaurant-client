@@ -10,15 +10,18 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const { login, googleLogIn, facebookLogIn, githubLogIn, user, loader }= useAuth()
     const captchaRef = useRef(null)
     const [disable, setDisable] = useState(true)
     const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
-    const from = location?.state || '/';
+    const from = location?.state?.from?.pathname || '/';
+    console.log(location.state);
     useEffect(() => {
         if (user) {
             navigate('/')
@@ -54,11 +57,9 @@ const Login = () => {
             .catch(error => console.log(error))
     }
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        const form = e.target
-        const email = form.email.value
-        const password = form.password.value
+    const onSubmit = data => {
+        const email = data.email
+        const password = data.password
         // console.log(email, password)
         login(email, password)
             .then((result) => {
@@ -97,7 +98,7 @@ const Login = () => {
                     <div className="hero md:min-h-96 w-full">
                         <div className="hero-content rounded-lg p-5 w-full">
                             <div className=" shrink-0 w-full ">
-                                <form onSubmit={handleSubmit} className="card-body">
+                                <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                                     <div>
                                         <h3 className="text-4xl text-[#444444] roboto font-semibold mb-6">Login</h3>
 
@@ -106,8 +107,10 @@ const Login = () => {
                                         <label className="label">
                                             <span className="label-text">Email</span>
                                         </label>
-                                        <input type="email" name="email" placeholder="Email address" className="input bg-white mb-2"
+                                        <input type="email" name="email"  placeholder="Email address" className="input bg-white mb-2 "
+                                        {...register("email", { required: true })}
                                         />
+                                        {errors.email && <span className="text-red-700">Required*</span>}
                                     </div>
                                     <div className="form-control mb-6">
                                         <label className="label">
@@ -115,7 +118,9 @@ const Login = () => {
                                         </label>
                                         <div className="relative ">
                                             <input type={showPassword ? "text" : "password"} name="password" placeholder="password" className="input w-full bg-white"
+                                            {...register("password", { required: true })}
                                             />
+                                            {errors.password && <span className="text-red-700">Required*</span>}
                                             <span className="absolute top-3 right-4" onClick={() => setShowPassword(!showPassword)}>
                                                 {
                                                     showPassword ? <IoMdEyeOff className="text-[#9c9c9c] text-xl"></IoMdEyeOff> : <FaEye className="text-[#9c9c9c] text-xl"></FaEye>

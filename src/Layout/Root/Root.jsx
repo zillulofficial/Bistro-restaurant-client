@@ -4,7 +4,7 @@ import Navbar from "../Navbar/Navbar";
 
 const Root = () => {
     const Location= useLocation()
-    const noHeaderFooter= Location.pathname.includes('login')
+    const noHeaderFooter= Location.pathname.includes('login') || Location.pathname.includes('register')
     return (
         <div>
             {/* navbar */}
