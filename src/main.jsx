@@ -21,6 +21,8 @@ import {
   useQuery,
 } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import Dashboard from './Layout/Dashboard/Dashboard.jsx';
+import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
 
 const queryClient = new QueryClient()
 
@@ -28,6 +30,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -55,6 +58,13 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path:'dashboard',
+    element: <Dashboard></Dashboard>,
+    children:[
+
+    ]
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(
