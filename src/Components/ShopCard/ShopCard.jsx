@@ -2,19 +2,21 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import {  useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useCart from "../../Hooks/useCart";
 
 const ShopCard = ({ items }) => {
-    const { name, recipe, image, price } = items
+    const { _id, name, recipe, image, price } = items
     const axiosSecure= useAxiosSecure()
     const navigate= useNavigate()
     const {user}= useAuth()
     const location= useLocation()
+    const [, refetch]= useCart()
 
-    const handleAddProduct= (items)=>{
+    const handleAddProduct= ()=>{
         
         if(user && user?.email){
             const cartInfo= {
-                menuId: items._id,
+                menuId: _id,
                 email: user.email,
                 name,
                 image,
@@ -31,6 +33,8 @@ const ShopCard = ({ items }) => {
                         icon: 'success',
                         confirmButtonText: 'Okay'
                     })
+                    // refetch the cart
+                    refetch()
                 }
             })
 
@@ -64,7 +68,7 @@ const ShopCard = ({ items }) => {
                     <h2 className="text-2xl mb-2">{name}</h2>
                     <p className="mb-6">{recipe}</p>
                     <div className="text-center">
-                        <button onClick={()=> handleAddProduct(items)} class="relative inline-flex items-center justify-center py-3 pl-8 pr-8 overflow-hidden font-semibold text-[#BB8506] transition-all duration-150 ease-in-out rounded hover:pl-8 hover:pr-8 bg-gray-50 group">
+                        <button onClick={handleAddProduct} class="relative inline-flex items-center justify-center py-3 pl-8 pr-8 overflow-hidden font-semibold text-[#BB8506] transition-all duration-150 ease-in-out rounded hover:pl-8 hover:pr-8 bg-gray-50 group">
                             <span class="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-[#BB8506] group-hover:bg-[#1F2937] group-hover:h-full"></span>
 
                             <span class="relative w-full text-center transition-colors duration-200 ease-in-out group-hover:text-[#BB8506] font-Cinzel">ADD TO CART</span>

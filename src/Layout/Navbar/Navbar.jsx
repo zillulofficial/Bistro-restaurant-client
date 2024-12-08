@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import { RiShoppingCartFill } from "react-icons/ri";
+import useCart from "../../Hooks/useCart";
+import { IoMdCart } from "react-icons/io";
 
 const Navbar = () => {
     const { user, logout } = useAuth()
-    const navigate= useNavigate()
+    const navigate = useNavigate()
+    const [cart]= useCart()
     const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
 
     useEffect(() => {
@@ -16,10 +20,11 @@ const Navbar = () => {
     const navOptions = <>
         <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/'><div>Home</div></Link></li>
         <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/contactUs'><div>Contact Us</div></Link></li>
-        <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/dashBoard'><div>Dashboard</div></Link></li>
         <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/menu'><div>Our Menu</div></Link></li>
         <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/shop/salad'><div>Our Shop</div></Link></li>
- </>
+        <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/dashBoard'><div>Dashboard</div></Link></li>
+
+    </>
 
 
     const handleToggle = e => {
@@ -30,50 +35,52 @@ const Navbar = () => {
             setTheme("light")
         }
     }
-    const handleLogOut= ()=>{
+    const handleLogOut = () => {
         logout()
-        .then(
-            navigate('/')
-        )
+            .then(
+                navigate('/')
+            )
 
     }
     return (
         <div className='navbar fixed z-10 bg-black bg-opacity-30 bg-clip-padding blur-backdrop-filter px-4'>
-            
+
             <div className="dropdown text-slate-200">
-                        <div tabIndex={0} role="button" className="btn btn-ghost  lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                        </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-red-900  w-52 ">
-                            {navOptions}
-                        </ul>
-                    </div>
+                <div tabIndex={0} role="button" className="btn btn-ghost  lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </div>
+                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-red-900  w-52 ">
+                    {navOptions}
+                </ul>
+            </div>
             <div className='ml-3 lg:ml-0 flex-1'>
                 <div className='flex items-center'>
                     <Link to='/'><p className="font-bold text-xl uppercase dms text-slate-200">BISTRO BOSS <br /><span className="font-roboto text-[12px]">R e s t a u r a n t</span></p></Link>
                 </div>
             </div>
             <div className='flex-none'>
-            <div className="navbar-center hidden lg:flex">
+                <div className="navbar-center hidden lg:flex">
                     <ul className="menu-horizontal">
                         {navOptions}
                     </ul>
                 </div>
                 <ul className='menu-horizontal px-1'>
+                    <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to=''>
+                        <div className="relative">
+                            <RiShoppingCartFill className="text-2xl text-lime"></RiShoppingCartFill>
+                            <div className="badge badge-primary absolute">{cart.length}</div>
+                        </div></Link></li>
 
                     {
                         user ?
-                            <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto">
-                                <div onClick={handleLogOut}>
+                            <li onClick={handleLogOut} className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 flex items-center px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto">
+                                
                                     Logout
-                                </div>
                             </li>
                             :
-                            <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto">
+                            <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 flex items-center px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto">
                                 <Link to='/login'>
-                                    <div>
                                         Login
-                                    </div>
                                 </Link>
                             </li>
                     }

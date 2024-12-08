@@ -15,6 +15,14 @@ import ContactUs from './Pages/ContactUs/ContactUs.jsx';
 import Login from './Pages/Login/Login.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
 import Register from './Pages/Register/Register.jsx';
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -52,9 +60,12 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <HelmetProvider>
-        <RouterProvider router={router} />
-      </HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <HelmetProvider>
+          <RouterProvider router={router} />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </HelmetProvider>
+      </QueryClientProvider>
     </AuthProvider>
   </StrictMode>,
 )
