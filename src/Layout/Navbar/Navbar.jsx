@@ -8,7 +8,7 @@ import { IoMdCart } from "react-icons/io";
 const Navbar = () => {
     const { user, logout } = useAuth()
     const navigate = useNavigate()
-    const [cart]= useCart()
+    const [cart] = useCart()
     const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const Navbar = () => {
         <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/contactUs'><div>Contact Us</div></Link></li>
         <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/menu'><div>Our Menu</div></Link></li>
         <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/shop/salad'><div>Our Shop</div></Link></li>
-        <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/dashBoard'><div>Dashboard</div></Link></li>
+        <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to='/dashboard'><div>Dashboard</div></Link></li>
 
     </>
 
@@ -65,22 +65,25 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <ul className='menu-horizontal px-1'>
-                    <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto"><Link to=''>
-                        <div className="relative">
-                            <RiShoppingCartFill className="text-2xl text-lime"></RiShoppingCartFill>
-                            <div className="badge badge-primary absolute">{cart.length}</div>
-                        </div></Link></li>
+                    <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto">
+                        <Link to='dashboard/cart'>
+                            <div className="relative">
+                                <RiShoppingCartFill className="text-2xl text-lime"></RiShoppingCartFill>
+                                <div className="badge badge-primary absolute">{cart.length}</div>
+                            </div>
+                        </Link>
+                    </li>
 
                     {
                         user ?
                             <li onClick={handleLogOut} className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 flex items-center px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto">
-                                
-                                    Logout
+
+                                Logout
                             </li>
                             :
                             <li className="cursor-pointer font-semibold text-xs text-slate-200 hover:ring-2 hover:ring-red-300 duration-200 ease-in py-2 flex items-center px-3 hover:rounded-md bg-transparent mx-3 uppercase font-roboto">
                                 <Link to='/login'>
-                                        Login
+                                    Login
                                 </Link>
                             </li>
                     }
