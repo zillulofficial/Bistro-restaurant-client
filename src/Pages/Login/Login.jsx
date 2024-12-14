@@ -11,10 +11,12 @@ import "react-toastify/dist/ReactToastify.css";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Login = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const { login, googleLogIn, facebookLogIn, githubLogIn, user, loader }= useAuth()
+    const axiosPublic = useAxiosPublic()
     const captchaRef = useRef(null)
     const [disable, setDisable] = useState(true)
     const [showPassword, setShowPassword] = useState(false)
@@ -50,8 +52,16 @@ const Login = () => {
             .then(result => {
                 if (result.user) {
                     console.log(result.user)
-                    
-                    navigate(from)
+                    const userInfo= {
+                        name: result.user.displayName,
+                        photoURL: result.user.photoURL,
+                        email: result.user.email,
+                    }
+                    axiosPublic.post('/users', userInfo)
+                    .then(res=>{
+                        console.log(res.data);
+                        navigate(from)
+                    })
                 }
             })
             .catch(error => console.log(error))

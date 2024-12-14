@@ -3,13 +3,17 @@ import { Helmet } from "react-helmet-async";
 import { FaEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
 import { TbBrandGithubFilled } from "react-icons/tb";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false)
+    const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state?.from?.pathname || '/';
     const { createUser, googleLogIn, facebookLogIn, githubLogIn, user, setUser, updateUserProfile } = useAuth()
 
     const handleSocialSignIn = (socialProvider) => {
@@ -17,8 +21,16 @@ const Register = () => {
             .then(result => {
                 if (result.user) {
                     console.log(result.user)
-                    
-                    navigate(from)
+                    const userInfo= {
+                        name: result.user.displayName,
+                        photoURL: result.user.photoURL,
+                        email: result.user.email,
+                    }
+                    axiosPublic.post('/users', userInfo)
+                    .then(res=>{
+                        console.log(res.data);
+                        navigate(from)
+                    })
                 }
             })
             .catch(error => console.log(error))
@@ -31,7 +43,7 @@ const Register = () => {
         const photoURL = form.photoURL.value
         const email = form.email.value
         const password = form.password.value
-        console.log(name,photoURL,email, password)
+        
         if (!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)) {
             Swal.fire({
                 title: 'OOPS!',
@@ -48,14 +60,25 @@ const Register = () => {
                     .then(res => {
                         setUser({ ...user, photoURL: photoURL, displayName: name })
                         console.log(res);
-                        navigate('/')
+                        const userInfo={
+                            name: name,
+                            photoURL: photoURL,
+                            email: email
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    Swal.fire({
+                                        title: 'Congrats!',
+                                        text: 'Registered successfully',
+                                        icon: 'success',
+                                        confirmButtonText: 'Okay'
+                                    })
+                                    navigate('/')
+                                }
+                            })
                     })
-                Swal.fire({
-                    title: 'Congrats!',
-                    text: 'Registered successfully',
-                    icon: 'success',
-                    confirmButtonText: 'Okay'
-                })
+
                 console.log(result.user)
             })
             .catch(error => console.log(error))

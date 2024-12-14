@@ -24,6 +24,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import Dashboard from './Layout/Dashboard/Dashboard.jsx';
 import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
 import MyCart from './Pages/DashboardPages/MyCart.jsx';
+import PrivateRoute from './Routes/PrivateRoute.jsx';
 
 const queryClient = new QueryClient()
 
@@ -61,7 +62,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       {
           path:'cart',
