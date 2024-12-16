@@ -25,6 +25,7 @@ import Dashboard from './Layout/Dashboard/Dashboard.jsx';
 import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
 import MyCart from './Pages/DashboardPages/MyCart.jsx';
 import PrivateRoute from './Routes/PrivateRoute.jsx';
+import AllUsers from './Pages/DashboardPages/AllUsers/AllUsers.jsx';
 
 const queryClient = new QueryClient()
 
@@ -67,6 +68,12 @@ const router = createBrowserRouter([
       {
           path:'cart',
           element: <MyCart></MyCart>
+      },
+
+      // admin related routes
+      {
+        path: 'allUsers',
+        element: <AllUsers></AllUsers>
       }
     ]
   }

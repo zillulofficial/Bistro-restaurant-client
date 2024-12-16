@@ -61,7 +61,7 @@ const MyCart = () => {
                             <tr className="bg-[#D1A054]">
                                 <th>#</th>
                                 <th className="font-semibold text-white">Item Image</th>
-                                <th className="font-semibold text-white">Item Name</th>
+                                <th className="font-semibold text-white pl-32 pr-0">Item Name</th>
                                 <th className="font-semibold text-white">Price</th>
                                 <th className="font-semibold text-white text-center">Action</th>
                             </tr>
@@ -72,7 +72,7 @@ const MyCart = () => {
                                 cart.map((item, i) => <tr key={item._id}>
                                     <th>{i + 1}</th>
                                     <td className="h-16 w-16"><img src={item.image} alt="" /></td>
-                                    <td>{item.name}</td>
+                                    <td className=" pl-32 pr-0">{item.name}</td>
                                     <td>${item.price}</td>
                                     <td className="flex justify-center">
                                         <button onClick={() => handleDelete(item._id)} className="btn btn-error"><RiDeleteBin6Line className="text-xl"></RiDeleteBin6Line></button>
