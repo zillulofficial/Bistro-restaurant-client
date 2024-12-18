@@ -26,6 +26,7 @@ import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
 import MyCart from './Pages/DashboardPages/MyCart.jsx';
 import PrivateRoute from './Routes/PrivateRoute.jsx';
 import AllUsers from './Pages/DashboardPages/AllUsers/AllUsers.jsx';
+import AdminRoute from './Routes/AdminRoute.jsx';
 
 const queryClient = new QueryClient()
 
@@ -73,7 +74,7 @@ const router = createBrowserRouter([
       // admin related routes
       {
         path: 'allUsers',
-        element: <AllUsers></AllUsers>
+        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
       }
     ]
   }

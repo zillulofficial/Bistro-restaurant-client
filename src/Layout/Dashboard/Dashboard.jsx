@@ -6,16 +6,16 @@ import { FaShoppingBag } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GiKnifeFork } from "react-icons/gi";
 import { IoIosPeople } from "react-icons/io";
-import { MdLibraryBooks } from "react-icons/md";
-import { TfiMenuAlt } from "react-icons/tfi";
+import { MdLibraryBooks } from "react-icons/md"; 
 import { FaListUl } from "react-icons/fa6";
 import { IoMdCart } from "react-icons/io";
 import { GiWallet } from "react-icons/gi";
 import { VscPreview } from "react-icons/vsc";
 import { TbBrandBooking } from "react-icons/tb";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Dashboard = () => {
-    const isAdmin = true
+    const [isAdmin] = useAdmin()
     return (
         <div className="flex">
             <div className="w-72 min-h-screen bg-[#D1A054]">
