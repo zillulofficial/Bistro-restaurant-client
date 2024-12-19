@@ -30,7 +30,7 @@ const Dashboard = () => {
                                     <NavLink className='px-2 py-2 rounded-md flex items-center gap-3' to='/dashboard/adminHome'><IoHomeSharp className="text-[#151515] text-xl"></IoHomeSharp>Admin Home</NavLink>
                                 </li>
                                 <li className="menu-title text-center font-Cinzel text-[#151515] font-medium">
-                                    <NavLink className='px-2 py-2 rounded-md flex items-center gap-3' to='/dashboard/addItem'><GiKnifeFork className="text-[#151515] text-xl"></GiKnifeFork>Add Items</NavLink>
+                                    <NavLink className='px-2 py-2 rounded-md flex items-center gap-3' to='/dashboard/addItems'><GiKnifeFork className="text-[#151515] text-xl"></GiKnifeFork>Add Items</NavLink>
                                 </li>
                                 <li className="menu-title text-center font-Cinzel text-[#151515] font-medium">
                                     <NavLink className='px-2 py-2 rounded-md flex items-center gap-3' to='/dashboard/manageItems'><FaListUl className="text-[#151515] text-xl"></FaListUl>Manage items</NavLink>
